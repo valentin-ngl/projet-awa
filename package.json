@@ -1,0 +1,19 @@
+{
+  "name": "my-chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bottender": "^1.5.1-alpha.9",
+    "newbot": "^0.7.1",
+    "newbot-dialogflow": "^1.1.1",
+    "newbot-formats": "^1.7.1",
+    "skills-validator": "^100.0.14"
+  }
+}
