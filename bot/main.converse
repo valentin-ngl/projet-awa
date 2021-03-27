@@ -1,0 +1,10 @@
+@Event('start')
+start() {
+    @Format('buttons', [
+        {
+            type: 'postback',
+            title: 'DEMARRER LA CONVERSATION'
+        }
+    ])
+    > salut, je suis AWA votre assistante. voulez vous demarrer une conversation ?
+}

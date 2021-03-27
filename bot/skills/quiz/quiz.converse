@@ -1,0 +1,96 @@
+@Intent(/DEMARRER LA CONVERSATION/i)
+
+DEMARRER() {
+    
+    @Format('buttons', [
+        {
+            type: 'postback',
+            title: 'quest ce que Jangolo ?'
+        },
+        {
+            type: 'postback',
+            title: 'jaimerais en savoir plus sur votre plateforme'
+        },
+        {
+            type: 'postback',
+            title: 'comment accéder à votre plateforme ?'
+        },
+        {
+            type: 'postback',
+            title: 'comment pouvoir vendre à partir de votre site?'
+        }
+    ])
+    > Que voulez vous savoir ?
+    
+}
+@Intent(/quest ce que Jangolo ?/i)
+    explication(){
+        > Jangolo est le moteur de recherche agribusiness pour l'Afrique. c'est à dire qu'elle offre, aux agriculteurs du continent une plateforme pour vendre leurs produits, se connecter à d’éventuels partenaires et bénéficier de solutions globales de gestion pour une agriculture plus efficiente. aux Consommateurs, elle offre une plateforme pour trouver un ou des produits/services agricoles ou agroalimentaires pour les acheter. et aux Commerçants, une plateforme pour acheter ou vendre des produits ou services dans la chaîne de valeur agribusiness.
+            questions = [
+            {
+                str: 'alors quelle est lactivite qui vous correspond le mieux ?',
+                choices: ['agriculture', 'elevage', 'agro-industrie', 'commerce agricole', 'consommation']
+            }
+        ]
+
+        // question au choix pour le profil
+        for (question of questions) {
+            
+            @Format('quickReplies', question.choices)
+            > { question.str }
+
+            Prompt()
+
+            index = :text
+        // apres recuperation du champ de saisie on verfie quel profil il a choisit et on redirige en fonction de celui ci
+            if (index == 'agriculture') {
+                > super... ☺ nous allons vous rediriger vers l'application Farmer qui vous aidera à faire un suivi  de votre production.
+                > pour acceder à farmer vous devez etre au prealable inscrit sur la plateforme. etes vous deja inscrit ?
+                Prompt()
+                index1 = :text
+                    if(index1 == 'oui'){
+                        >super
+                    }
+                    else{
+                        >sdfsd
+                        @Format('buttons', [
+                            {
+                                title : 'inscrivez-vous',
+                                url: 'https://jangolo.cm/register'
+                            }
+                        ])
+                        > alors je propose de vous inscrire en cliquant sur le lien suivant :
+                    }
+                }
+            else {
+                ---
+                > ok
+                > dac
+                ---
+            }
+        }
+
+    
+    }
+
+    
+@Intent(/jaimerais en savoir plus sur votre plateforme ?/i)
+    voirplus(){
+         @Format('video', 'https://www.facebook.com/jangolofarm/videos/quest-ce-que-cest-jangolo-/1165979943767351/')
+         > vous vous posez sans cesse la question "c'est quoi exactement jangolo ?", je vous invite a regarder cette video !
+
+    }
+
+    
+@Intent(/comment accéder à votre plateforme ?/i)
+    commentaccder() {
+        @Format('buttons', [
+            {
+                title: 'Jangolo.cm',
+                url: 'https://jangolo.cm/'
+            }
+        ])
+        >vous pouvez acceder a notre plateforme en cliquant sur le lien suivant :
+
+        
+    }
